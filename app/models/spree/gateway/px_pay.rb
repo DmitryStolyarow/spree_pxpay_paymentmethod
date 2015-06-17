@@ -52,7 +52,7 @@ private
     def px_pay_request(payment, callback_url)
       Pxpay::Base.pxpay_user_id = self.preferred_user_id
       Pxpay::Base.pxpay_key     = self.preferred_key
-      Pxpay::Request.new(payment.id, payment.amount, { :url_success => callback_url, :url_failure => callback_url, :currency_input => self.currency })
+      Pxpay::Request.new(payment.id, payment.amount, { :url_success => callback_url, :url_failure => callback_url, :currency_input => self.preferences[:currency] })
     end
 
     # Calculates the url to return to after the PxPay process completes
